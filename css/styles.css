@@ -1,0 +1,86 @@
+.hidden-div {
+  display: none;
+}
+
+body,html {
+  text-align: center;
+  background-color: #ccc;
+  height: auto;
+}
+
+/*#loginForm .has-error .control-label,
+#loginForm .has-error .help-block,
+#loginForm .has-error .form-control-feedback {
+    color: #f39c12;
+}
+
+#loginForm .has-success .control-label,
+#loginForm .has-success .help-block,
+#loginForm .has-success .form-control-feedback {
+    color: #18bc9c;
+}*/
+
+/* Color of invalid field */
+/*.has-error .control-label,
+.has-error .help-block,
+.has-error .form-control-feedback {
+    color: #a94442;
+}*/
+
+/* Color of valid field */
+/*.has-success .control-label,
+.has-success .help-block,
+.has-success .form-control-feedback {
+    color: #3c763d;
+}*/
+
+.panel {
+  width: 55%;
+  margin-left: auto;
+  margin-top: 80px;
+  margin-right: auto;
+}
+
+.panel-body {
+  padding-top: 30px;
+}
+
+.btn {
+  margin-top: 15px;
+}
+
+.iconStyle {
+  padding-right: 5px;
+}
+
+
+.header {
+  background-color: #333;
+  color: #fff;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.header h1 {
+  font-size: 40px;
+}
+
+.content h1 {
+  color: #fff;
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  margin-top: 270px;
+  padding-bottom: 40px;
+  padding-top: 20px;
+}
+
+
+/** Media Query **/
+@media only screen and (max-width: 650px) {
+    .panel {
+      width: 90%;
+    }
+}
