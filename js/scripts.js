@@ -17,7 +17,9 @@ class BankAccount {
 }
 
 class UserAccount {
-  constructor(email, username, password, confirmPassword) {
+  constructor(firstName, lastName, email, username, password, confirmPassword) {
+    this.firstName = firstName;
+    this.lastName = lastName;
     this.email = email;
     this.money = 0;
     this.username = username;
@@ -26,6 +28,14 @@ class UserAccount {
   }
 
   // Getters
+  getFirstName() {
+    return this.firstName;
+  }
+
+  getLastName() {
+    return this.lastName;
+  }
+
   getEmail() {
     return this.email;
   }
@@ -43,6 +53,14 @@ class UserAccount {
   }
 
   // setters
+  setFirstName(newFirstName) {
+    this.firstName = newFirstName;
+  }
+
+  setLastName(newLastName) {
+    this.lastName = newLastName;
+  }
+
   setEmail(email) {
     this.email = email;
   }
@@ -73,6 +91,8 @@ $(document).ready(function() {
 
   $("#registerBtn").click(function(event) {
 
+    var inputFirstName = $("#inputFirstName").val();
+    var inputLastName = $("#inputLastName").val();
     var inputEmail = $("#inputEmail").val();
     var inputUsername = $("#inputUsername").val();
     var inputPass1 = $("#inputPass1").val();
@@ -81,10 +101,10 @@ $(document).ready(function() {
     newUser = new UserAccount(inputEmail, inputUsername, inputPass1, inputPass2);
 
     var userInputs = {
-      'email': inputEmail,
-      'username': inputUsername,
-      'password1': inputPass1,
-      'password2': inputPass2
+      email: inputEmail,
+      username: inputUsername,
+      password1: inputPass1,
+      password2: inputPass2
     }
 
     localStorage.setItem("userInput", JSON.stringify(userInputs));
@@ -109,8 +129,9 @@ $(document).ready(function() {
   } else if (currentWindow.includes("dashboard.html")) {
     console.log("on the dashboard.html page");
     var userInputFields = localStorage.getItem("userInput");
-    console.log(userInputFields);
-    $("#accountEmail").text(userInputFields[1]);
+    var userInputObject = JSON.parse(userInputFields);
+    $("#accountUsername").text(userInputObject.username);
+    $("#accountEmail").text(userInputObject.email);
   }
 
 });
