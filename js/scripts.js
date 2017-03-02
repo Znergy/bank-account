@@ -21,7 +21,7 @@ class UserAccount {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
-    this.money = 0;
+    this.money = 1000;
     this.username = username;
     this.password = password;
     this.confirmPassword = confirmPassword;
@@ -100,19 +100,18 @@ $(document).ready(function() {
 
     newUser = new UserAccount(inputFirstName, inputLastName, inputEmail, inputUsername, inputPass1, inputPass2);
 
-    var userInput = {
-      firstname: inputFirstName,
-      lastname: inputLastName,
-      email: inputEmail,
-      username: inputUsername,
-      password1: inputPass1,
-      password2: inputPass2
-    }
-    // this will convert our object to a string, and save it locally (in browser)
-    localStorage.setItem("userInput", JSON.stringify(userInput));
+    // var userInput = {
+    //   firstname: inputFirstName,
+    //   lastname: inputLastName,
+    //   email: inputEmail,
+    //   username: inputUsername,
+    //   password1: inputPass1,
+    //   password2: inputPass2
+    // }
 
-    console.log(newUser.email);
-
+    // this will convert our newUser object to a string, and save it locally (in browser)
+    localStorage.setItem("userInput", JSON.stringify(newUser));
+    console.log(newUser);
     event.preventDefault();
   });
 
@@ -137,13 +136,37 @@ $(document).ready(function() {
 
     // this will get our string object we passed from registration fields
     // once saved to a var, we can use .parse to change the string back into an object
-    var userInputFields = localStorage.getItem("userInput");
-    var userInputObject = JSON.parse(userInputFields);
+    var userInputString = localStorage.getItem("userInput");
+    var newUserData = JSON.parse(userInputString);
 
     // this is where we are adding the object contents (which were saved in memory)
     // into our dashboard fields (located on the dashboards.html page)
-    $("#accountUsername").text(userInputObject.username);
-    $("#accountEmail").text(userInputObject.email);
+    $("#accountName").text(newUserData.firstName + " " + newUserData.lastName);
+    $("#accountUsername").text(newUserData.username);
+    $("#accountEmail").text(newUserData.email);
+    $("#accountCurrentBalance").text(newUserData.money);
+
+    var addMoneyAmount = 0;
+    var withdrawMoneyAmount = 0;
+    $("#addWithdrawBtn").click(function(event) {
+      event.preventDefault();
+
+      addMoneyAmount = parseInt($("#addMoneyInput").val());
+      withdrawMoneyAmount = parseInt($("#withdrawMoneyInput").val());
+
+      if(addMoneyAmount > 0) {
+        newUserData.money += addMoneyAmount;
+      }
+
+      if (withdrawMoneyAmount > 0) {
+        newUserData.money -= withdrawMoneyAmount;
+      }
+      console.log(newUserData.money);
+    });
+
+    $("#changePasswordBtn").click(function(event)) {
+      
+    }
   }
 
 });
