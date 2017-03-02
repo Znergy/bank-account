@@ -71,22 +71,22 @@
             <div class="panel-body">
               <form class="addWithdrawForm">
                 <div class="input-group balance-style">
-                  <h4>Current Balance: <span id="balanceH4" class="glyphicon glyphicon-euro"></span> 5321.45</h4>
+                  <h4>Current Balance: <span class="glyphicon glyphicon-euro"></span> <span id="accountCurrentBalance"></span></h4>
                 </div>
                 <div class="input-group">
                   <span class="input-group-addon">Add Money</span>
-                  <input class="form-control" placeholder="$324.25" type="text" />
+                  <input class="form-control" placeholder="$324.25" id="addMoneyInput" type="text" />
                 </div>
                 <div class="input-group">
                   <span class="input-group-addon">Withdraw Money</span>
-                  <input class="form-control" placeholder="$1561" type="text" />
+                  <input class="form-control" placeholder="$1561" id="withdrawMoneyInput" type="text" />
                 </div>
                 <div class="input-group new-balance balance-style">
                   <h4>New Balance: <span id="newBalanceH4" class="glyphicon glyphicon-euro"></span> 3240.15</h4>
                 </div>
                 <div class="buttonStyles confirm-trans-btn">
                 <a href="https://google.com" target="_blank">
-                  <button class="btn btn-primary" type="submit">
+                  <button class="btn btn-primary" type="submit" id="addWithdrawBtn">
                     <span class="glyphicon glyphicon-transfer iconStyle"></span>Confirm
                   </button></a>
                 </div>
