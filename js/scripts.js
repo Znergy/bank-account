@@ -164,20 +164,24 @@ $(document).ready(function() {
       console.log(newUserData.money);
     });
 
-    $("#changePasswordBtn").click(function(event)) {
+    $("#changePasswordBtn").click(function(event) {
+
+      event.preventDefault();
+
       var currentPassword = $("#accountPassword").val();
       var newPassword = $("#newAccountPassword").val();
       var confirmPassword = $("#changePasswordConfirmation").val();
       if(newUserData.password !== currentPassword) {
-        alert("Your current password is wrong.");
+        alert("Your current password is wrong." + "You entered " + currentPassword + ", but your actual current password is " + newUserData.password);
       } else if (newPassword !== confirmPassword) {
         // if new password and confirm password don't match
-        alert("New Password and confirmation password don't match.");
+        alert("New Password and confirmation password don't match." + "You entered " + newPassword + ", but your confirmation password was " + confirmPassword);
       } else {
         // if current password matches the one saved locally
         // then we change it
         newUserData.password = newPassword;
+        console.log("Your password was changed to " + newUserData.password);
       }
-    }
+    });
   }
 });
