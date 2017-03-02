@@ -165,8 +165,19 @@ $(document).ready(function() {
     });
 
     $("#changePasswordBtn").click(function(event)) {
-      
+      var currentPassword = $("#accountPassword").val();
+      var newPassword = $("#newAccountPassword").val();
+      var confirmPassword = $("#changePasswordConfirmation").val();
+      if(newUserData.password !== currentPassword) {
+        alert("Your current password is wrong.");
+      } else if (newPassword !== confirmPassword) {
+        // if new password and confirm password don't match
+        alert("New Password and confirmation password don't match.");
+      } else {
+        // if current password matches the one saved locally
+        // then we change it
+        newUserData.password = newPassword;
+      }
     }
   }
-
 });
